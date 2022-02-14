@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  searchapi:
+    image: ${DOCKER_REGISTRY-}searchapi
+    build:
+      context: .
+      dockerfile: SearchAPI/Dockerfile
+
+  redis:
+    container_name: redis
+    image: 'redislabs/redismod:preview'
+    ports:
+      - '6379:6379'
