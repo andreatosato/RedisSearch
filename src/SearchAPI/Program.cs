@@ -1,4 +1,5 @@
 using Redis.OM;
+using SearchAPI;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,5 +24,10 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+using var s = app.Services.CreateScope();
+{
+    var init = new BootstrapData(s.ServiceProvider.GetRequiredService<RedisConnectionProvider>());
+    await init.BootstrapAsync(100);
+}
 
 app.Run();
