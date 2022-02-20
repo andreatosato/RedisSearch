@@ -2,10 +2,16 @@ version: '3.4'
 
 services:
   searchapi:
-    image: ${DOCKER_REGISTRY-}searchapi
+    image: omsearchapi
     build:
       context: .
       dockerfile: SearchAPI/Dockerfile
+
+  nsearchapi:
+    image: nsearchapi
+    build:
+      context: .
+      dockerfile: NSearchAPI/Dockerfile
 
   redis:
     container_name: redis

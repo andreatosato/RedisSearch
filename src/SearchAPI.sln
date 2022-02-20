@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchAPI", "SearchAPI\Sear
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F34ECA46-4859-42A2-8F97-023F8AF69FD5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSearchAPI", "NSearchAPI\NSearchAPI.csproj", "{3B2F5E75-BC2B-4E40-AFF7-435AC93A3E89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,12 @@ Global
 		{F34ECA46-4859-42A2-8F97-023F8AF69FD5}.NoVariablesDefault|Any CPU.Build.0 = NoVariablesDefault
 		{F34ECA46-4859-42A2-8F97-023F8AF69FD5}.Release|Any CPU.ActiveCfg = NoVariablesDefault
 		{F34ECA46-4859-42A2-8F97-023F8AF69FD5}.Release|Any CPU.Build.0 = NoVariablesDefault
+		{3B2F5E75-BC2B-4E40-AFF7-435AC93A3E89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B2F5E75-BC2B-4E40-AFF7-435AC93A3E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B2F5E75-BC2B-4E40-AFF7-435AC93A3E89}.NoVariablesDefault|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B2F5E75-BC2B-4E40-AFF7-435AC93A3E89}.NoVariablesDefault|Any CPU.Build.0 = Debug|Any CPU
+		{3B2F5E75-BC2B-4E40-AFF7-435AC93A3E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B2F5E75-BC2B-4E40-AFF7-435AC93A3E89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
