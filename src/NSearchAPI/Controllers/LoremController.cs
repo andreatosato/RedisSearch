@@ -20,7 +20,7 @@ public class LoremController : ControllerBase
     {
         var d = new Document(Guid.NewGuid().ToString(), new Dictionary<string, RedisValue>()
         {
-            { "Text", string.Join("", LoremNET.Lorem.Paragraphs(1,100, 1,100, 1, 2)) }
+            { "Text", string.Join("", LoremNET.Lorem.Paragraphs(1,50, 1,20, 1, 2)) }
         });
 
         await redisClient.AddDocumentAsync(d);
