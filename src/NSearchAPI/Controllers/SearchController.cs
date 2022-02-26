@@ -12,9 +12,9 @@ public class SearchController : ControllerBase
 {
     private readonly Client redisClient;
 
-    public SearchController(Client redisClient)
+    public SearchController(SearchClients clients)
     {
-        this.redisClient = redisClient;
+        this.redisClient = clients.CustomeClient;
     }
 
     [HttpGet]
@@ -52,5 +52,13 @@ public class SearchController : ControllerBase
         return Ok(result);
     }
 
+    [HttpPost]
+    public async Task<IActionResult> CreateCustomer(Customer customer)
+    {
+        var doc = customer.GetDocument();
+        await redisClient.AddDocumentAsync(doc, new AddOptions { Language = "italian" });
+        var id = doc.Id;
+        return Created($"search/{id}", doc);
+    }
 }
 
