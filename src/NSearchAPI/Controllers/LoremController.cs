@@ -20,7 +20,7 @@ public class LoremController : ControllerBase
     {
         var d = new Document(Guid.NewGuid().ToString(), new Dictionary<string, RedisValue>()
         {
-            { "Text", string.Join("", LoremNET.Lorem.Paragraphs(100, 10_000, 100, 100)) }
+            { "Text", string.Join("", LoremNET.Lorem.Paragraphs(1,100, 1,100, 1, 2)) }
         });
 
         await redisClient.AddDocumentAsync(d);
@@ -34,4 +34,33 @@ public class LoremController : ControllerBase
         
         return Ok(result);
     }
+
+    [HttpGet("Document")]
+    public async Task<IActionResult> SearchDocument(string text)
+    {
+        var result = await redisClient.SearchAsync(new Query(text) { WithScores = true });
+        List<DocumentResult> documents = new List<DocumentResult>();
+        result.Documents.ForEach(t => {
+            documents.Add(new DocumentResult
+            {
+                Text = t["Text"],
+                Score = t.Score,
+                ScoreExplained = t.ScoreExplained,
+                Id = t.Id
+            });
+        });
+        return Ok(new
+        {
+            Count = documents.Count,
+            Texts = documents.OrderByDescending(t => t.Score)
+        });
+    }
+}
+
+public class DocumentResult
+{
+    public string Text { get; set; } = null!;
+    public string[] ScoreExplained { get; set; } = null!;
+    public double Score { get; set; }
+    public string Id { get; set; } = null!;
 }
